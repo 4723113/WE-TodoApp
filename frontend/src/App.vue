@@ -7,15 +7,16 @@ const todos = ref<Todo[]>([
   { id: 2, title: 'Write report', completed: true},
   { id: 3, title: 'Call Alice', completed: false},
 ]);
-const completedCount = computed(
-  todos.value.filter(() => );
+const completedCount = computed(() => {
+    return todos.value.filter(todo => !todo.completed).length;
+});
 </script>
 
 <template>
   <div id="app">
 
     <section class="todo-app">
-      <h2>Todos</h2>
+      <h2>Todos({{ completedCount }})</h2>
 
       <ul>
         <li
