@@ -1,14 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import {ref} from 'vue'
-const todos = defineModel("todos")
+import { useTodosStore } from '@/stores/todoStore';
 
-const newTitle = ref('');
-const nextId = ref(Math.max(0, ...todos.value.map((t) => t.id)) + 1);
-function addTodo() {
-  const title = newTitle.value;
-  todos.value.push({ id: nextId.value++, title, completed: false });
-  newTitle.value = '';
-}
+const todoStore = useTodosStore();
+const newTitle = ref<string>('');
+
 </script>
 
 <template>
@@ -21,7 +17,7 @@ function addTodo() {
           placeholder="New todo title"
           aria-label="New todo title"
         />
-        <button v-on:click="addTodo">Add</button>
+        <button v-on:click="todoStore.addTodo(newTitle)" :disabled="!newTitle">Add</button>
       </div>
     </section>
   </div>
