@@ -24,7 +24,7 @@ const todoStore = useTodosStore();
           <span :style="{ textDecoration: todo.completed ? 'line-through' : 'none' }">
             {{ todo.title }}
           </span>
-          <button v-on:click="todoStore.addTodo(newTitle)" :disabled="!newTitle">Remove</button>
+          <button v-on:click="todoStore.removeTodo(todo.id)" >Remove</button>
         </li>
       </ul>
     </section>

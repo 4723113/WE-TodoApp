@@ -24,7 +24,7 @@ export const useTodosStore = defineStore('todos', () =>{
     }
     const removeTodo = (id: number) => {
 
-        todos.value = todos.value.filter(todos => todos.id !== id)
+        todos.value = todos.value.filter(todos => todos.id !== idgit )
     }
     return {todos, addTodo, removeTodo}
 })
